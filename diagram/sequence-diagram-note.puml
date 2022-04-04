@@ -1,0 +1,12 @@
+@startuml
+
+actor User 
+
+User --> NoteCntl : start note
+NoteCntl --> NoteView : updates
+NoteCntl --> Note : uses
+User --> NoteView : enter note
+NoteView --> NoteCntl : take note
+NoteCntl --> Note : give note 
+Note --> Sqlite : save note
+@enduml

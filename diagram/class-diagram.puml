@@ -1,0 +1,77 @@
+@startuml
+
+package mvc {
+	class main {
+		+ main()
+	} 
+}
+
+package mvc.cnt {
+	class LoginCntl {
+		- Login : Login
+		- LoginUI : LoginView 
+	}
+	class NoteCntl {
+		- Note : Note
+		- Alert : Alert
+		- connection : DBConnect
+	}
+}
+
+package mvc.model {
+	class Login {
+		username : String
+		password : String
+	}
+	class Note {
+		text : String
+		datetime : DATETIME
+	}
+	class Alert { 
+		datetime : DATETIME
+		title : String	
+	}
+	class DBConnect {
+
+	}
+}
+
+package mvc.view {
+	class LoginView
+	class NoteView
+	class ToDoView
+	class AlertView
+}
+
+database "Sqlite" {
+	!define primary_key(x) <b><color:#b8861b><&key></color> x</b>
+	!define foreign_key(x) <color:#aaaaaa><&key></color> x
+	!define column(x) <color:#efefef><&media-record></color> x
+	!define table(x) entity x << (T, white) >>
+
+	table( NOTE ) {
+		primary_key( id ): UUID 
+		column( username ): VARCHAR
+		column( date ): DATETIME
+		column( body ): TEXT
+	}
+}
+
+skinparam linetype polyline 
+skinparam linetype ortho
+
+main --> LoginCntl : uses
+LoginCntl --> Login : uses
+LoginCntl --> LoginView : updates
+LoginCntl --> DBConnect : uses 
+LoginCntl --> NoteCntl : gives control
+DBConnect --> Sqlite : uses
+
+NoteCntl --> Note : uses
+NoteCntl --> NoteView : updates
+NoteCntl --> ToDoView : updates
+NoteCntl --> AlertView : updates
+NoteCntl --> DBConnect : uses
+NoteCntl --> Alert : uses
+
+@enduml

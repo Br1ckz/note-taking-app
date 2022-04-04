@@ -1,0 +1,29 @@
+@startuml
+
+title Login to Account
+
+actor User
+
+User -> StartApp : Run application
+
+StartApp -> LoginCntl : Give control
+
+LoginCntl -> LoginView : Show user interface
+
+User -> LoginView : Enter credentials
+
+LoginView -> LoginCntl : Take Credentials
+
+LoginCntl -> Login : Send Credentials
+
+Login -> Login : Authenticate 
+
+Login -> LoginCntl : Authenticated
+
+LoginCntl -> LoginView : Clear user interface
+
+LoginCntl -> NoteView : Show user interface
+
+LoginCntl -> NoteCntl : Give control
+
+@enduml
