@@ -14,6 +14,12 @@ public class LoginUser {
     private String LName;
     
     
+    public LoginUser(String FName, String LName){
+        this.FName = FName;
+        this.LName = LName;
+    }
+    
+    
     public void setFName(String FN) {
         this.FName = FN;
     }
