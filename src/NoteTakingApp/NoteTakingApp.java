@@ -4,23 +4,25 @@
  */
 package NoteTakingApp;
 
-import java.sql.Connection;
 import java.util.Scanner;
 import mvc.model.DBConnection;
 import java.util.ArrayList;
 import java.util.List;
+import mvc.controller.LoginCntl;
 
 /**
  *
  * @author bryce
  */
-public class Main {
+public class NoteTakingApp {
 
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		DBConnection dbConnection = new DBConnection();
+		LoginCntl loginCntl = new LoginCntl();
+		
+//		DBConnection dbConnection = new DBConnection();
 
 //		if (connection != null) {
 //			insertUser(dbConnection);
