@@ -77,6 +77,11 @@ public class CreateAccountView extends javax.swing.JFrame {
                 });
 
                 submitButton.setText("Submit");
+                submitButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                submitButtonActionPerformed(evt);
+                        }
+                });
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -145,6 +150,10 @@ public class CreateAccountView extends javax.swing.JFrame {
         private void lastNameFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lastNameFieldMouseEntered
 		lastNameField.setText("");
         }//GEN-LAST:event_lastNameFieldMouseEntered
+
+        private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+                loginCntl.createAccount(firstNameField.getText(), lastNameField.getText());
+        }//GEN-LAST:event_submitButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton cancelButton;

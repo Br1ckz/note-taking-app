@@ -177,6 +177,7 @@ public class DBConnection {
 	public void closeConnection() {
 		try {
 			connection.close();
+			System.out.println("Connection to SQLite has been closed.");
 		} catch (SQLException e) {
 		}
 	}
@@ -235,5 +236,41 @@ public class DBConnection {
 	 */
 	public void setColArr(ArrayList colArr) {
 		this.colArr = colArr;
+	}
+	
+	public int getLastUserId() {
+		String queryId = "SELECT * FROM USERS ORDER BY UserID DESC LIMIT 1";
+
+		try ( PreparedStatement stmt = connection.prepareStatement(queryId)) {
+
+			ResultSet resultSet = stmt.executeQuery();
+
+			return resultSet.getRow();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return -1;
+	}
+	
+	public boolean checkAccountCredentials(String firstName, String lastName) {
+		String queryAccount = "SELECT * FROM USERS where ? and ?";
+
+		try ( PreparedStatement stmt = connection.prepareStatement(queryAccount)) {
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+
+			ResultSet resultSet = stmt.executeQuery();
+
+			if (resultSet != null) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return false;
 	}
 }

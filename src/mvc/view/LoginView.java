@@ -43,6 +43,11 @@ public class LoginView extends javax.swing.JFrame {
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
                 loginButton.setText("Login");
+                loginButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                loginButtonActionPerformed(evt);
+                        }
+                });
 
                 createAccountButton.setText("Create Account");
                 createAccountButton.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +129,10 @@ public class LoginView extends javax.swing.JFrame {
         private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
 		System.exit(0);
         }//GEN-LAST:event_quitButtonActionPerformed
+
+        private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+                loginCntl.authenticate(fNameField.getText(), lNameField.getText());
+        }//GEN-LAST:event_loginButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton createAccountButton;

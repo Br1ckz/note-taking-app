@@ -6,7 +6,6 @@ package mvc.controller;
 
 import mvc.model.DBConnection;
 import mvc.view.CreateAccountView;
-import mvc.view.CreateAccountView;
 import mvc.view.LoginView;
 
 /**
@@ -37,5 +36,16 @@ public class LoginCntl {
 		if (bool == false) {
 			createAccountUI.dispose();
 		}
+	}
+	
+	public void createAccount(String firstName, String lastName) {
+		int currId = dbConnection.getLastUserId();
+		if (currId != -1) {
+			dbConnection.insertUser(currId, firstName, lastName);
+		}
+	}
+	
+	public void authenticate(String firstName, String lastName) {
+		boolean accountExist = dbConnection.checkAccountCredentials(firstName, lastName);
 	}
 }
