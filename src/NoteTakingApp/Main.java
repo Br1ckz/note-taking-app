@@ -21,14 +21,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		DBConnection dbConnection = new DBConnection();
-		Connection connection = dbConnection.connect();
 
-		if (connection != null) {
-			insertUser(dbConnection);
+//		if (connection != null) {
+//			insertUser(dbConnection);
 //			dbConnection.removeUser(2);
-			printUsers(dbConnection);
-			dbConnection.closeConnection();
-		}
+//			printUsers(dbConnection);
+//			dbConnection.closeConnection();
+//		}
 	}
 
 	public static void insertUser(DBConnection dbConnection) {
