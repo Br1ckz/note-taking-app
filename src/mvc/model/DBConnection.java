@@ -4,12 +4,7 @@
  */
 package mvc.model;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,8 +14,6 @@ import java.util.ArrayList;
 import java.sql.ResultSetMetaData;
 import java.util.List;
 import static mvc.model.DBConnection.getCurrentPath;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.jdbc.ScriptRunner;
 
 /**
  *
@@ -30,7 +23,7 @@ public class DBConnection {
 
 	private Connection connection;
 	private List<ArrayList<String>> resultArr;
-	private ArrayList colArr;
+	private ArrayList<String> colArr;
 
 	/**
 	 *
@@ -103,7 +96,7 @@ public class DBConnection {
 			String c2;
 			String c3;
 
-			colArr = new ArrayList<String>();
+			colArr = new ArrayList<>();
 
 			int colNum = rsmd.getColumnCount();
 
@@ -226,7 +219,7 @@ public class DBConnection {
 	 *
 	 * @return
 	 */
-	public ArrayList getColArr() {
+	public ArrayList<String> getColArr() {
 		return colArr;
 	}
 
@@ -234,7 +227,7 @@ public class DBConnection {
 	 *
 	 * @param colArr
 	 */
-	public void setColArr(ArrayList colArr) {
+	public void setColArr(ArrayList<String> colArr) {
 		this.colArr = colArr;
 	}
 	
