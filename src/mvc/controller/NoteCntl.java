@@ -32,9 +32,10 @@ public class NoteCntl{
         this.loginview.showLoginUI(false);
     }
     
-//    public void sendNote (String note) {
-//        this.dbConnection.setConnection(connection);
-//    }
+    public void sendNote (int userId, int noteID, String noteBody) {
+        this.dbConnection.insertNote(noteID, noteBody);
+        this.dbConnection.insertNoteUser(userId, noteID);
+    }
     
     public void showNoteUI(Boolean bool) { 
         noteview.setVisible(bool);
