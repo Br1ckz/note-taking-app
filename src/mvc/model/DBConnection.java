@@ -146,6 +146,32 @@ public class DBConnection {
 			e.getMessage();
 		}
 	}
+        
+        public void insertNote (int noteId, String noteBody) {
+            String insertNote = "INSERT INTO NOTES" + 
+                    " (NoteID, Body) VALUES (?,?)";
+            try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
+                    
+                queryStatement.setInt(1, noteId);
+                queryStatement.setString(2, insertNote);
+                
+            } catch (SQLException e) {
+                e.getMessage();
+            }
+        }
+        
+        public void insertNoteUser (int userId, int noteId) {
+            String insertData = "INSERT INTO USER_NOTES" + 
+                    " (UserID, NoteID) VALUES (?,?)";
+            try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
+                
+                queryStatement.setInt(1, userId);
+                queryStatement.setInt(2, noteId);
+                
+            } catch (SQLException e) {
+                e.getMessage();
+            }
+        }
 
 	/**
 	 *
