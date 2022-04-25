@@ -47,5 +47,9 @@ public class LoginCntl {
 	
 	public void authenticate(String firstName, String lastName) {
 		boolean accountExist = dbConnection.checkAccountCredentials(firstName, lastName);
+		if (accountExist) {
+			NavCntl navCntl = new NavCntl(this, dbConnection);
+			showLoginUI(false);
+		}
 	}
 }
