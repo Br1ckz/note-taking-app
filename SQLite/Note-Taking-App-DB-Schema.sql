@@ -13,5 +13,6 @@ CREATE TABLE NOTES (
     NoteID      INTEGER  PRIMARY KEY AUTOINCREMENT,
     CreatedDate DATETIME,
     DueByDate   DATETIME,
-    Body        TEXT
+    Body        TEXT,
+    Title       TEXT
 );
