@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSetMetaData;
+import java.util.Date;
 import java.util.List;
 import static mvc.model.DBConnection.getCurrentPath;
 
@@ -292,4 +293,16 @@ public class DBConnection {
 		
 		return false;
 	}
+
+    public void insertDate(Date finalDateTime) {
+        String insertDateStatement = "INSERT DATE" + " " + "(DateTime (format dd/MM/yyyy HH:mm:ss)";
+        
+        try(PreparedStatement queryStatement = connection.prepareStatement(insertDateStatement)){
+            queryStatement.setDate(1, (java.sql.Date) finalDateTime);
+            queryStatement.executeUpdate();
+        }
+        catch(SQLException e){
+                e.getMessage();
+                }
+    }
 }
