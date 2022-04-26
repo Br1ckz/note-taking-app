@@ -4,16 +4,22 @@
  */
 package mvc.view;
 
+import java.text.ParseException;
+import mvc.controller.DateTimeCntl;
+import java.text.SimpleDateFormat;
+import java.util.Date; 
 /**
  *
  * @author Kaitlin
  */
 public class DateTimeView extends javax.swing.JFrame {
 
+    private DateTimeCntl datetimeCntl;
     /**
      * Creates new form DateTimeScreen
      */
-    public DateTimeView() {
+    public DateTimeView(DateTimeCntl datetimeCntl) {
+        this.datetimeCntl = datetimeCntl;
         initComponents();
     }
 
@@ -206,8 +212,18 @@ public class DateTimeView extends javax.swing.JFrame {
         TimeTextField.setText("");
     }//GEN-LAST:event_TimeTextFieldMouseClicked
 
-  
-    /**
+  private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException{
+      String sDate = DateTextField.getText();
+      String sTime = TimeTextField.getText();  
+      String sCombine = sDate + " " + sTime;
+      
+      //Idea of code referenced from https://www.javatpoint.com/java-string-to-date
+      Date finalDateTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sCombine );
+  }
+  private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt){
+      System.exit(0);
+  }
+  /**
      * @param args the command line arguments
      */
   
