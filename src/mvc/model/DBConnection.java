@@ -65,9 +65,11 @@ public class DBConnection {
 				createTable = connection.prepareStatement(stmt);
 				createTable.execute();
 				stmt = "CREATE TABLE NOTES ("
-					+ "NoteID INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ "Date   DATETIME,"
-					+ "Body   TEXT"
+					+ "NoteID      INTEGER  PRIMARY KEY AUTOINCREMENT,"
+					+ "CreatedDate DATETIME,"
+                                        + "DueByDate   DATETIME,"
+					+ "Body        TEXT,"
+                                        + "Title       TEXT"
 					+ ");";
 				createTable = connection.prepareStatement(stmt);
 				createTable.execute();
@@ -147,32 +149,44 @@ public class DBConnection {
 			e.getMessage();
 		}
 	}
+        
+        public void insertNote (int noteId, String noteBody) {
+                String insertNote = "INSERT INTO NOTES" + 
+                        " (NoteID, Body) VALUES (?,?)";
+                try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
 
-	public void insertNote(int noteId, String noteBody) {
-		String insertNote = "INSERT INTO NOTES"
-			+ " (NoteID, Body) VALUES (?,?)";
-		try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
+                    queryStatement.setInt(1, noteId);
+                    queryStatement.setString(2, insertNote);
 
-			queryStatement.setInt(1, noteId);
-			queryStatement.setString(2, insertNote);
+                } catch (SQLException e) {
+                    e.getMessage();
+                }
+        }
+        
+        public void insertNoteUser (int userId, int noteId) {
+                String insertData = "INSERT INTO USER_NOTES" + 
+                        " (UserID, NoteID) VALUES (?,?)";
+                try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
 
-		} catch (SQLException e) {
-			e.getMessage();
-		}
-	}
+                    queryStatement.setInt(1, userId);
+                    queryStatement.setInt(2, noteId);
 
-	public void insertNoteUser(int userId, int noteId) {
-		String insertData = "INSERT INTO USER_NOTES"
-			+ " (UserID, NoteID) VALUES (?,?)";
-		try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
+                } catch (SQLException e) {
+                    e.getMessage();
+                }
+        }
+        
+        public void getNote (String title) {
+                String insertData = "SELECT TITLE FROM NOTES" + 
+                        " WHERE TITLE = \"?\"";
+                try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
 
-			queryStatement.setInt(1, userId);
-			queryStatement.setInt(2, noteId);
+                    queryStatement.setString(1, title);
 
-		} catch (SQLException e) {
-			e.getMessage();
-		}
-	}
+                } catch (SQLException e) {
+                    e.getMessage();
+                }
+        }
 
 	/**
 	 *
