@@ -45,6 +45,11 @@ public class NavView extends javax.swing.JFrame {
                 });
 
                 btnAlert.setText("Alert");
+                btnAlert.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnAlertActionPerformed(evt);
+                        }
+                });
 
                 btnNote.setText("Note");
                 btnNote.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +97,10 @@ public class NavView extends javax.swing.JFrame {
         private void btnNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoteActionPerformed
                 navCntl.giveNoteControl();
         }//GEN-LAST:event_btnNoteActionPerformed
+
+        private void btnAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlertActionPerformed
+                navCntl.giveAlertControl();
+        }//GEN-LAST:event_btnAlertActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnAlert;

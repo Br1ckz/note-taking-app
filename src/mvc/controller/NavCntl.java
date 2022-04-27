@@ -39,4 +39,9 @@ public class NavCntl {
 		NoteCntl noteCntl = new NoteCntl(this, dbConnection);
 		showNavUI(false);
 	}
+	
+	public void giveAlertControl() {
+		AlertCntl alertCntl = new AlertCntl(this, dbConnection);
+		showNavUI(false);
+	}
 }

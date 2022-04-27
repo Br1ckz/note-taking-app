@@ -3,41 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package mvc.controller;
-
 
 import java.util.Date;
 import mvc.model.DBConnection;
-import mvc.view.DateTimeView;
+import mvc.view.AlertView;
+
 /**
  *
  * @author sabrinamatteoli
  */
 
-/********************************* MODIFICATION LOG *************************************
-*
-*
-*****************************************************************************************/
-public class DateTimeCntl
-{
-    private DateTimeView datetimeUI;
-    private DBConnection dbConnection; 
-    
-    public DateTimeCntl(){
-        this.dbConnection = new DBConnection();
-        this.datetimeUI = new DateTimeView(this);
-        showDateTimeCntl(true);
-    }//DateTimeCntl
-    
-    public void showDateTimeCntl(boolean bool){
-        datetimeUI.setVisible(bool);
-        if (bool == false){
-            datetimeUI.dispose();        }
-    }//showDateTimeCntl   
-    
-    public void addDateTime(Date finalDateTime){
-        dbConnection.insertDate(finalDateTime);
-    }//addDateTime
-    
-}//class DateTimeCntl
+/**
+ * ******************************* MODIFICATION LOG
+ * *************************************
+ *
+ *
+ ****************************************************************************************
+ */
+public class AlertCntl {
+
+	private AlertView alertUI;
+	private DBConnection dbConnection;
+	private NavCntl navCntl;
+	
+	public AlertCntl(NavCntl navCntl, DBConnection dbConnection) {
+		this.navCntl = navCntl;
+		this.dbConnection = dbConnection;
+		this.alertUI = new AlertView(this);
+		showAlertUI(true);
+	}//DateTimeCntl
+
+	public void showAlertUI(boolean bool) {
+		alertUI.setVisible(bool);
+		if (bool == false) {
+			alertUI.dispose();
+		}
+	}//showDateTimeCntl   
+
+	public void addDateTime(Date finalDateTime) {
+		dbConnection.insertDate(finalDateTime);
+	}//addDateTime
+
+	public void giveNavControl() {
+		navCntl.showNavUI(true);
+		showAlertUI(false);
+	}
+}//class AlertCntl
