@@ -1,46 +1,77 @@
 @startuml
 
 package mvc {
-	class main {
+	class NoteTakingApp {
 		+ main()
 	} 
 }
 
-package mvc.cnt {
+package mvc.cntl {
 	class LoginCntl {
-		- Login : Login
-		- LoginUI : LoginView 
+		- CreateAccoutView
+		- LoginView
+		- DBConnection
+		+ showLoginUI(boolean bool)
+		+ showCreateAccoutnUI(boolean bool)
+		+ createAccount(String firstName, String lastName)
+		+ authenticate(String firstName, String lastName)
+	}
+	class NavCntl {
+		- LoginCntl
+		- NavView
+		- DBConnection
+		+ showNavUI()
+		+ giveLoginControl()
+		+ giveNoteControl()
 	}
 	class NoteCntl {
-		- Note : Note
-		- Alert : Alert
-		- connection : DBConnect
+		- DBConnection
+		- NoteView
+		- NavCntl
+		+ sendNote(int userId, int noteID, String noteBody)
+		+ showNoteUI(Boolean bool)
+		+ giveNavControl()
+	}
+	class AlertCntl {
+		- AlertView alert
 	}
 }
 
 package mvc.model {
-	class Login {
-		username : String
-		password : String
-	}
-	class Note {
-		text : String
-		datetime : DATETIME
-	}
-	class Alert { 
-		datetime : DATETIME
-		title : String	
-	}
-	class DBConnect {
-
+	class DBConnection {
+		- Connection
+		+ connect()
+		+ insertUser(int userId, String firstName, String lastName)
+		+ insertNote(int noteId, String noteBody)
+		+ insertNoteUser(int userId, int noteId)
+		+ removeUser(int userId)
+		+ closeConnection()
+		+ getCurrentPath()
+		+ getLastUserId()
+		+ checkAccountCredentials(String firstName, String lastname)
+		+ insertDate(Date finalDateTime)
 	}
 }
 
 package mvc.view {
-	class LoginView
-	class NoteView
-	class ToDoView
-	class AlertView
+	class CreateAccountView {
+		- LoginCntl
+	}
+	class LoginView {
+		- LoginCntl
+	}
+	class DateTimeView {
+		- DateTimeCntl
+	}
+	class NavView {
+		- NavCntl
+	}
+	class NoteView {
+		- NoteCntl
+	}
+	class AlertView {
+		- AlertCntl
+	}
 }
 
 database "Sqlite" {
@@ -60,18 +91,26 @@ database "Sqlite" {
 skinparam linetype polyline 
 skinparam linetype ortho
 
-main --> LoginCntl : uses
-LoginCntl --> Login : uses
+NoteTakingApp --> LoginCntl : uses
+LoginCntl --> CreateAccountView : uses
 LoginCntl --> LoginView : updates
-LoginCntl --> DBConnect : uses 
+LoginCntl --> DBConnection : uses 
 LoginCntl --> NoteCntl : gives control
-DBConnect --> Sqlite : uses
+DBConnection --> Sqlite : uses
+LoginCntl --> NavCntl : gives control
 
-NoteCntl --> Note : uses
+NavCntl --> NavView : updates
+NavCntl --> DBConnection : uses
+NavCntl --> NoteCntl : gives control
+NavCntl --> AlertCntl : gives control
+NavCntl --> LoginCntl : gives control
+
 NoteCntl --> NoteView : updates
-NoteCntl --> ToDoView : updates
-NoteCntl --> AlertView : updates
-NoteCntl --> DBConnect : uses
-NoteCntl --> Alert : uses
+NoteCntl --> DBConnection : uses
+NoteCntl --> NavCntl : gives control
+
+AlertCntl --> AlertView : updates
+AlertCntl --> DBConnection : uses
+AlertCntl --> NavCntl : gives control
 
 @enduml
