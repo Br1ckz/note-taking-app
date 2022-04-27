@@ -147,32 +147,32 @@ public class DBConnection {
 			e.getMessage();
 		}
 	}
-        
-        public void insertNote (int noteId, String noteBody) {
-            String insertNote = "INSERT INTO NOTES" + 
-                    " (NoteID, Body) VALUES (?,?)";
-            try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
-                    
-                queryStatement.setInt(1, noteId);
-                queryStatement.setString(2, insertNote);
-                
-            } catch (SQLException e) {
-                e.getMessage();
-            }
-        }
-        
-        public void insertNoteUser (int userId, int noteId) {
-            String insertData = "INSERT INTO USER_NOTES" + 
-                    " (UserID, NoteID) VALUES (?,?)";
-            try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
-                
-                queryStatement.setInt(1, userId);
-                queryStatement.setInt(2, noteId);
-                
-            } catch (SQLException e) {
-                e.getMessage();
-            }
-        }
+
+	public void insertNote(int noteId, String noteBody) {
+		String insertNote = "INSERT INTO NOTES"
+			+ " (NoteID, Body) VALUES (?,?)";
+		try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
+
+			queryStatement.setInt(1, noteId);
+			queryStatement.setString(2, insertNote);
+
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+	}
+
+	public void insertNoteUser(int userId, int noteId) {
+		String insertData = "INSERT INTO USER_NOTES"
+			+ " (UserID, NoteID) VALUES (?,?)";
+		try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
+
+			queryStatement.setInt(1, userId);
+			queryStatement.setInt(2, noteId);
+
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+	}
 
 	/**
 	 *
@@ -257,7 +257,7 @@ public class DBConnection {
 	public void setColArr(ArrayList<String> colArr) {
 		this.colArr = colArr;
 	}
-	
+
 	public int getLastUserId() {
 		String queryId = "SELECT * FROM USERS ORDER BY UserID DESC LIMIT 1";
 
@@ -270,10 +270,10 @@ public class DBConnection {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return -1;
 	}
-	
+
 	public boolean checkAccountCredentials(String firstName, String lastName) {
 		String queryAccount = "SELECT * FROM USERS where ? and ?";
 
@@ -286,23 +286,22 @@ public class DBConnection {
 			if (resultSet != null) {
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return false;
 	}
 
-    public void insertDate(Date finalDateTime) {
-        String insertDateStatement = "INSERT DATE" + " " + "(DateTime (format dd/MM/yyyy HH:mm:ss)";
-        
-        try(PreparedStatement queryStatement = connection.prepareStatement(insertDateStatement)){
-            queryStatement.setDate(1, (java.sql.Date) finalDateTime);
-            queryStatement.executeUpdate();
-        }
-        catch(SQLException e){
-                e.getMessage();
-                }
-    }
+	public void insertDate(Date finalDateTime) {
+		String insertDateStatement = "INSERT DATE" + " " + "(DateTime (format dd/MM/yyyy HH:mm:ss)";
+
+		try ( PreparedStatement queryStatement = connection.prepareStatement(insertDateStatement)) {
+			queryStatement.setDate(1, (java.sql.Date) finalDateTime);
+			queryStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+	}
 }
