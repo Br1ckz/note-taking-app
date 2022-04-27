@@ -34,6 +34,10 @@ public class NoteCntl {
 		this.dbConnection.insertNote(noteID, noteBody);
 		this.dbConnection.insertNoteUser(userId, noteID);
 	}
+        
+        public void getNote (String title) {
+                this.dbConnection.getNote(title);
+        }
 
 	public void showNoteUI(Boolean bool) {
 		noteview.setVisible(bool);
