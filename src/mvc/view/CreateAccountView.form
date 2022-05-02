@@ -101,7 +101,7 @@
         <Property name="text" type="java.lang.String" value="Please Enter First Name"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="firstNameFieldMouseEntered"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="firstNameFieldMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="lastNameField">
@@ -109,7 +109,7 @@
         <Property name="text" type="java.lang.String" value="Please Enter Last Name"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lastNameFieldMouseEntered"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lastNameFieldMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="resetButton">
