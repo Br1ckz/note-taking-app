@@ -127,6 +127,7 @@ public class LoginView extends javax.swing.JFrame {
         }//GEN-LAST:event_createAccountButtonActionPerformed
 
         private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
+		loginCntl.closeDatabaseConnection();
 		System.exit(0);
         }//GEN-LAST:event_quitButtonActionPerformed
 

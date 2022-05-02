@@ -12,10 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSetMetaData;
-import java.time.LocalDateTime;
 //import java.util.Date;
 import java.util.List;
 import java.sql.Date;
+import java.util.HashMap;
 import static mvc.model.DBConnection.getCurrentPath;
 
 /**
@@ -401,5 +401,70 @@ public class DBConnection {
 			System.out.println(e.getMessage());
 		}
 		return -1;
+	}
+	
+	public ArrayList<String> selectNote(int noteID) {
+		String selectNotes = "SELECT Title, Body from Notes "
+			+ "where NoteID = ?";
+		try (PreparedStatement stmt = connection.prepareStatement(selectNotes)) {
+			stmt.setInt(1, noteID);
+			ResultSet resultSet = stmt.executeQuery();
+			ArrayList<String> arr = new ArrayList<>();
+			while(resultSet.next()) {
+				arr.add(resultSet.getString("Title"));
+				arr.add(resultSet.getString("Body"));
+			}
+			resultSet.close();
+			stmt.close();
+			return arr;
+		} catch (SQLException e) {
+			System.out.println("selectNote");
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
+	public int getLastNoteID() {
+		String lastID = "SELECT * from NOTES ORDER BY NoteID DESC LIMIT 1";
+		try (PreparedStatement stmt = connection.prepareStatement(lastID)) {
+			ResultSet resultSet = stmt.executeQuery();
+			int noteID = resultSet.getInt("NoteID");
+			System.out.println("LastNoteID: " + noteID);
+			return noteID;
+		} catch (SQLException e) {
+			System.out.println("getLastNoteID");
+			System.out.println(e.getMessage());
+		}
+		return -1;
+	}
+	
+	public int getFirstNoteID() {
+		String lastID = "SELECT * from NOTES ORDER BY NoteID ASC LIMIT 1";
+		try (PreparedStatement stmt = connection.prepareStatement(lastID)) {
+			ResultSet resultSet = stmt.executeQuery();
+			int noteID = resultSet.getInt("NoteID");
+			System.out.println("LastNoteID: " + noteID);
+			return noteID;
+		} catch (SQLException e) {
+			System.out.println("getLastNoteID");
+			System.out.println(e.getMessage());
+		}
+		return -1;
+	}
+	
+	public void updateNote(int noteID, String noteTitle, String noteBody) {
+		String updateNote = "UPDATE NOTES "
+			+ "SET Title = ? , Body = ? "
+			+ "where NoteID = ?";
+		try (PreparedStatement stmt = connection.prepareStatement(updateNote)) {
+			stmt.setString(1, noteTitle);
+			stmt.setString(2, noteBody);
+			stmt.setInt(3, noteID);
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println("updateDate");
+			System.out.println(e.getMessage());
+		}
 	}
 }
