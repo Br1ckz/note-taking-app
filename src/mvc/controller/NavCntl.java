@@ -5,6 +5,7 @@
 package mvc.controller;
 
 import mvc.model.DBConnection;
+import mvc.model.User;
 import mvc.view.NavView;
 
 /**
@@ -15,10 +16,12 @@ public class NavCntl {
 	private LoginCntl loginCntl;
 	private NavView navUI;
 	private DBConnection dbConnection;
+	private User user;
 	
-	public NavCntl(LoginCntl loginCntl, DBConnection dbConnection) {
+	public NavCntl(LoginCntl loginCntl, DBConnection dbConnection, User user) {
 		this.loginCntl = loginCntl;
 		this.dbConnection = dbConnection;
+		this.user = user;
 		navUI = new NavView(this);
 		showNavUI(true);
 	}
@@ -36,12 +39,12 @@ public class NavCntl {
 	}
 	
 	public void giveNoteControl() {
-		NoteCntl noteCntl = new NoteCntl(this, dbConnection);
+		NoteCntl noteCntl = new NoteCntl(this, dbConnection, user);
 		showNavUI(false);
 	}
 	
 	public void giveAlertControl() {
-		AlertCntl alertCntl = new AlertCntl(this, dbConnection);
+		AlertCntl alertCntl = new AlertCntl(this, dbConnection, user);
 		showNavUI(false);
 	}
 }

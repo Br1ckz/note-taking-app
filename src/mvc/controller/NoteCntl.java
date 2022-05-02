@@ -4,9 +4,11 @@
  */
 package mvc.controller;
 
-import java.util.Date;
-import java.SQL.Date;
+import java.time.LocalDateTime;
+//import java.util.Date;
+import java.sql.Date;
 import mvc.model.DBConnection;
+import mvc.model.User;
 import mvc.view.NoteView;
 
 /**
@@ -23,18 +25,26 @@ public class NoteCntl {
 	private final DBConnection dbConnection;
 	private final NoteView noteview;
 	private final NavCntl navCntl;
+	private User user;
 
-	public NoteCntl(NavCntl navCntl, DBConnection dbConnection) {
+	public NoteCntl(NavCntl navCntl, DBConnection dbConnection, User user) {
+		this.navCntl = navCntl;
+		this.dbConnection = dbConnection;
+		this.user = user;
 		noteview = new NoteView(this);
 		showNoteUI(true);
-
-		this.dbConnection = new DBConnection();
-		this.navCntl = navCntl;
 	}
 
-	public void sendNote(int userId, int noteID, String noteBody, Date dueByDate) {
-		this.dbConnection.insertNote(noteBody,dueByDate);
-		this.dbConnection.insertNoteUser(userId, noteID);
+	public void sendNote(String noteTitle, String noteBody) {
+		int userId = user.getUserId();
+		int noteID = dbConnection.insertNote(noteTitle, noteBody);	
+		dbConnection.insertNoteUser(userId, noteID);
+	}
+	public void sendNote(String noteTitle, String noteBody, Date dueByDate) {
+		int userId = user.getUserId();
+		int noteID = dbConnection.insertNote(noteTitle, noteBody, dueByDate);
+//		int noteID = dbConnection.getNote(noteTitle);
+		dbConnection.insertNoteUser(userId, noteID);
 	}
         
         public void getNote (String title) {

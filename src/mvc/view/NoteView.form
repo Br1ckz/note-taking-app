@@ -28,7 +28,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="CreateNotePanel" alignment="0" pref="306" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="CreateNotePanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -38,7 +41,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
@@ -47,32 +50,40 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DirectionsLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="NewNoteField" min="-2" pref="346" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="SubmitButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                      <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="DirectionsLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NewNoteField" min="-2" pref="346" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="labelNoteTitle" min="-2" pref="62" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="fieldNoteTitle" min="-2" pref="238" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="NoteDate" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="labelAlertDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelAlertTime" min="-2" max="-2" attributes="0"/>
+                                          <Component id="NoteTime" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelAlertTimeFormat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="labelAlertDateFormat" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="SubmitButton" min="-2" max="-2" attributes="0"/>
-                      <Component id="NoteDate" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="NoteTime" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -82,19 +93,42 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="CreateNewNoteLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="DirectionsLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="NewNoteField" min="-2" pref="166" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="NoteDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NoteTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="labelNoteTitle" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldNoteTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="SubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="DirectionsLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="NewNoteField" min="-2" pref="111" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelAlertDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAlertTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelAlertDateFormat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAlertTimeFormat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="NoteDate" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="NoteTime" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="SubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="CancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -118,6 +152,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Submit"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubmitButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="CancelButton">
           <Properties>
@@ -125,14 +162,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="NoteDate">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="NoteTime">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="HH:mm:ss"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnBack">
           <Properties>
@@ -141,6 +172,38 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fieldNoteTitle">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelNoteTitle">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Note Title:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelAlertDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alert Date"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelAlertDateFormat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="YYYY/MM/DD"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelAlertTime">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alert Time"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelAlertTimeFormat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="HH:mm:ss"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
