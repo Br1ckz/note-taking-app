@@ -4,6 +4,8 @@
  */
 package mvc.controller;
 
+import java.util.Date;
+import java.SQL.Date;
 import mvc.model.DBConnection;
 import mvc.view.NoteView;
 
@@ -30,8 +32,8 @@ public class NoteCntl {
 		this.navCntl = navCntl;
 	}
 
-	public void sendNote(int userId, int noteID, String noteBody) {
-		this.dbConnection.insertNote(noteID, noteBody);
+	public void sendNote(int userId, int noteID, String noteBody, Date dueByDate) {
+		this.dbConnection.insertNote(noteBody,dueByDate);
 		this.dbConnection.insertNoteUser(userId, noteID);
 	}
         
