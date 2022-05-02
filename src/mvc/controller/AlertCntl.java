@@ -5,8 +5,9 @@
  */
 package mvc.controller;
 
-import java.util.Date;
+import java.sql.Date;
 import mvc.model.DBConnection;
+import mvc.model.User;
 import mvc.view.AlertView;
 
 /**
@@ -26,10 +27,12 @@ public class AlertCntl {
 	private AlertView alertUI;
 	private DBConnection dbConnection;
 	private NavCntl navCntl;
+	private User user;
 	
-	public AlertCntl(NavCntl navCntl, DBConnection dbConnection) {
+	public AlertCntl(NavCntl navCntl, DBConnection dbConnection, User user) {
 		this.navCntl = navCntl;
 		this.dbConnection = dbConnection;
+		this.user = user;
 		this.alertUI = new AlertView(this);
 		showAlertUI(true);
 	}//DateTimeCntl
@@ -41,8 +44,9 @@ public class AlertCntl {
 		}
 	}//showDateTimeCntl   
 
-	public void addDateTime(Date finalDateTime) {
-		dbConnection.insertDate(finalDateTime);
+	public void addDateTime(String noteTitle, Date finalDateTime) {
+		int noteID = dbConnection.getNoteID(noteTitle);
+		dbConnection.insertDate(noteID, finalDateTime);
 	}//addDateTime
 
 	public void giveNavControl() {

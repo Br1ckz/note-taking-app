@@ -152,6 +152,7 @@ public class DBConnection {
 			stmt.setString(1, firstName);
 			stmt.setString(2, lastName);
 			stmt.executeUpdate();
+			stmt.close();
 
 		} catch (SQLException e) {
 			e.getMessage();
@@ -168,6 +169,7 @@ public class DBConnection {
 			queryStatement.setDate(2, createdDate);
 			queryStatement.setString(3, noteTitle);
 			int noteID = queryStatement.executeUpdate();
+			queryStatement.close();
 			return noteID;
 
 		} catch (SQLException e) {
@@ -175,7 +177,7 @@ public class DBConnection {
 		}
 		return -1;
 	}
-	
+
 	public Integer insertNote(String noteTitle, String noteBody, Date dueByDate) {
 		String insertNote = "INSERT INTO NOTES "
 			+ "(Body, CreatedDate, DateDueBy, Title) "
@@ -187,8 +189,9 @@ public class DBConnection {
 			queryStatement.setDate(3, dueByDate);
 			queryStatement.setString(4, noteTitle);
 			int noteID = queryStatement.executeUpdate();
+			queryStatement.close();
 			return noteID;
-			
+
 		} catch (SQLException e) {
 			e.getMessage();
 		}
@@ -203,30 +206,35 @@ public class DBConnection {
 			queryStatement.setInt(1, noteId);
 			queryStatement.setInt(2, userId);
 			queryStatement.executeUpdate();
-			
+			queryStatement.close();
+
 		} catch (SQLException e) {
 			e.getMessage();
 		}
 	}
 
-	public ArrayList getNote(String title) {
+	public int getNoteID(String title) {
 		String insertData = "SELECT NoteID FROM NOTES"
-			+ " WHERE Title like '%'||?||'%'";
+			+ " WHERE Title = ?";
 		try ( PreparedStatement queryStatement = connection.prepareStatement(insertData)) {
 
 			queryStatement.setString(1, title);
 			ResultSet resultSet = queryStatement.executeQuery();
-			ArrayList<Integer> arr = new ArrayList<>(); 
-			while (resultSet.next()) {
-				arr.add(resultSet.getInt("NoteID"));
-			}
-			return arr;
-			
-			
+			int noteID = resultSet.getInt("NoteID");
+//			ArrayList<Integer> arr = new ArrayList<>(); 
+//			while (resultSet.next()) {
+//				arr.add(resultSet.getInt("NoteID"));
+//			}
+//			return arr;
+			resultSet.close();
+			queryStatement.close();
+			System.out.println("NoteID: " + noteID);
+			return noteID;
+
 		} catch (SQLException e) {
 			e.getMessage();
 		}
-		return null;
+		return -1;
 	}
 
 	/**
@@ -240,6 +248,7 @@ public class DBConnection {
 			// insert values into SQL prepared statement and execute
 			queryStatement.setInt(1, userId);
 			queryStatement.executeUpdate();
+			queryStatement.close();
 
 		} catch (SQLException e) {
 			e.getMessage();
@@ -361,12 +370,17 @@ public class DBConnection {
 		return false;
 	}
 
-	public void insertDate(Date finalDateTime) {
-		String insertDateStatement = "INSERT DATE" + " " + "(DateTime (format dd/MM/yyyy HH:mm:ss)";
+	public void insertDate(int noteID, Date finalDateTime) {
+		String insertDateStatement = "Update NOTES "
+			+ "SET DateDueBy = ? "
+			+ "where NoteID = ?";
 
 		try ( PreparedStatement queryStatement = connection.prepareStatement(insertDateStatement)) {
-			queryStatement.setDate(1, (java.sql.Date) finalDateTime);
+			queryStatement.setDate(1, finalDateTime);
+			queryStatement.setInt(2, noteID);
 			queryStatement.executeUpdate();
+			
+			queryStatement.close();
 		} catch (SQLException e) {
 			e.getMessage();
 		}
@@ -380,6 +394,8 @@ public class DBConnection {
 			stmt.setString(2, lastName);
 			ResultSet resultSet = stmt.executeQuery();
 			int userId = resultSet.getInt("UserID");
+			resultSet.close();
+			stmt.close();
 			return userId;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

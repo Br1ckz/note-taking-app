@@ -8,6 +8,8 @@ import java.text.ParseException;
 import mvc.controller.AlertCntl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +50,8 @@ public class AlertView extends javax.swing.JFrame {
                 btnEnter = new javax.swing.JButton();
                 btnCancel = new javax.swing.JButton();
                 btnBack = new javax.swing.JButton();
+                labelNoteTitle = new javax.swing.JLabel();
+                fieldNoteTitle = new javax.swing.JTextField();
 
                 jTable1.setModel(new javax.swing.table.DefaultTableModel(
                         new Object [][] {
@@ -87,10 +91,15 @@ public class AlertView extends javax.swing.JFrame {
 
                 dateTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
                 dateTextField.setName(""); // NOI18N
-                dateTextField.setText("mm/dd/yyyy");
+                dateTextField.setText("YYYY/MM/DD");
                 dateTextField.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 dateTextFieldMouseClicked(evt);
+                        }
+                });
+                dateTextField.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                dateTextFieldActionPerformed(evt);
                         }
                 });
 
@@ -134,7 +143,7 @@ public class AlertView extends javax.swing.JFrame {
                         .addGroup(TimePanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
+                                .addGap(30, 30, 30)
                                 .addComponent(timeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
@@ -169,39 +178,58 @@ public class AlertView extends javax.swing.JFrame {
                         }
                 });
 
+                labelNoteTitle.setText("Note Title");
+
+                fieldNoteTitle.setBackground(new java.awt.Color(223, 223, 223));
+                fieldNoteTitle.setForeground(new java.awt.Color(0, 0, 0));
+                fieldNoteTitle.setText("Note Title");
+
                 javax.swing.GroupLayout DateTimeMainPanelLayout = new javax.swing.GroupLayout(DateTimeMainPanel);
                 DateTimeMainPanel.setLayout(DateTimeMainPanelLayout);
                 DateTimeMainPanelLayout.setHorizontalGroup(
                         DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(DateTimeMainPanelLayout.createSequentialGroup()
                                 .addGap(28, 28, 28)
-                                .addGroup(DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(DateTimeMainPanelLayout.createSequentialGroup()
                                                 .addComponent(btnEnter)
-                                                .addGap(50, 50, 50)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(btnCancel)
-                                                .addGap(50, 50, 50)
-                                                .addComponent(btnBack))
-                                        .addComponent(TimePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(DatePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(TitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(35, Short.MAX_VALUE))
+                                                .addGap(40, 40, 40)
+                                                .addComponent(btnBack)
+                                                .addGap(93, 93, 93))
+                                        .addGroup(DateTimeMainPanelLayout.createSequentialGroup()
+                                                .addGroup(DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(TimePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(DatePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(TitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addContainerGap(35, Short.MAX_VALUE))))
+                        .addGroup(DateTimeMainPanelLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(labelNoteTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldNoteTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                 );
                 DateTimeMainPanelLayout.setVerticalGroup(
                         DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DateTimeMainPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(TitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(19, 19, 19)
+                                .addGroup(DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelNoteTitle)
+                                        .addComponent(fieldNoteTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(DatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 54, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TimePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addGroup(DateTimeMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnEnter)
+                                        .addComponent(btnBack)
                                         .addComponent(btnCancel)
-                                        .addComponent(btnBack))
-                                .addGap(126, 126, 126))
+                                        .addComponent(btnEnter))
+                                .addGap(89, 89, 89))
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,23 +265,40 @@ public class AlertView extends javax.swing.JFrame {
         }//GEN-LAST:event_btnBackActionPerformed
 
         private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-		String sDate = dateTextField.getText();
-		String sTime = timeTextField.getText();
-		String sCombine = sDate + " " + sTime;
+//		String sDate = dateTextField.getText();
+//		String sTime = timeTextField.getText();
+//		String sCombine = sDate + " " + sTime;
+//
+//		try {
+//			//Idea of code referenced from https://www.javatpoint.com/java-string-to-date
+//			Date finalDateTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sCombine);
+//			alertCntl.addDateTime(finalDateTime);
+//		} catch (ParseException e) {
+//			System.out.println(e.getMessage());
+//		}
 
+		String inputDateTime = dateTextField.getText() + " " + timeTextField.getText();
+		SimpleDateFormat formatDateTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		try {
-			//Idea of code referenced from https://www.javatpoint.com/java-string-to-date
-			Date finalDateTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sCombine);
-			alertCntl.addDateTime(finalDateTime);
-		} catch (ParseException e) {
-			System.out.println(e.getMessage());
+			java.util.Date dueByDateTime = formatDateTime.parse(inputDateTime);
+			java.sql.Date sqlDate = new java.sql.Date(dueByDateTime.getTime());
+			System.out.println(dueByDateTime.toString());
+			System.out.println("title: " + fieldNoteTitle.getText());
+			alertCntl.addDateTime(fieldNoteTitle.getText(), sqlDate);
+		} catch (ParseException ex) {
+			Logger.getLogger(NoteView.class.getName()).log(Level.SEVERE, null, ex);
 		}
         }//GEN-LAST:event_btnEnterActionPerformed
 
         private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 		dateTextField.setText("");
 		timeTextField.setText("");
+		fieldNoteTitle.setText("");
         }//GEN-LAST:event_btnCancelActionPerformed
+
+        private void dateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextFieldActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_dateTextFieldActionPerformed
 
 //	private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
 //		String sDate = dateTextField.getText();
@@ -281,9 +326,11 @@ public class AlertView extends javax.swing.JFrame {
         private javax.swing.JButton btnCancel;
         private javax.swing.JButton btnEnter;
         private java.awt.TextField dateTextField;
+        private javax.swing.JTextField fieldNoteTitle;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JScrollPane jScrollPane1;
         private javax.swing.JTable jTable1;
+        private javax.swing.JLabel labelNoteTitle;
         private java.awt.TextField timeTextField;
         // End of variables declaration//GEN-END:variables
 }

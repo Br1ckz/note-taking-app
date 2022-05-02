@@ -69,21 +69,33 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btnEnter" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="TimePanel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="DatePanel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="TitlePanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="TimePanel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="DatePanel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TitlePanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="labelNoteTitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="fieldNoteTitle" min="-2" pref="163" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,17 +104,22 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="TitlePanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelNoteTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fieldNoteTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="DatePanel" pref="54" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="TimePanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnEnter" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEnter" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -184,10 +201,11 @@
                   <Color id="Text Cursor"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
-                <Property name="text" type="java.lang.String" value="mm/dd/yyyy"/>
+                <Property name="text" type="java.lang.String" value="YYYY/MM/DD"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dateTextFieldMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateTextFieldActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -200,7 +218,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="TimeLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="timeTextField" min="-2" pref="163" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -258,6 +276,22 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labelNoteTitle">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Note Title"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fieldNoteTitle">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="df" green="df" red="df" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Note Title"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
