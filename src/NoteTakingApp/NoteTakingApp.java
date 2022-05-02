@@ -32,42 +32,42 @@ public class NoteTakingApp {
 //		}
 	}
 
-	public static void insertUser(DBConnection dbConnection) {
-		Scanner scanner = new Scanner(System.in);
+//	public static void insertUser(DBConnection dbConnection) {
+//		Scanner scanner = new Scanner(System.in);
+//
+//		System.out.print("Enter a UserID: ");
+//		int userId = Integer.parseInt(scanner.nextLine());
+//
+//		System.out.print("Enter a first name: ");
+//		String firstName = scanner.nextLine();
+//
+//		System.out.print("Enter a last name: ");
+//		String lastName = scanner.nextLine();
+//
+//		dbConnection.insertUser(userId, firstName, lastName);
+//	}
 
-		System.out.print("Enter a UserID: ");
-		int userId = Integer.parseInt(scanner.nextLine());
-
-		System.out.print("Enter a first name: ");
-		String firstName = scanner.nextLine();
-
-		System.out.print("Enter a last name: ");
-		String lastName = scanner.nextLine();
-
-		dbConnection.insertUser(userId, firstName, lastName);
-	}
-
-	public static void printUsers(DBConnection dbConnection) {
-		dbConnection.selectAllUsers();
-		List<ArrayList<String>> userRs = dbConnection.selectAllUsers();
-		ArrayList cols = dbConnection.getColArr();
-
-		// loop through column names
-		for (var col : cols) {
-			System.out.printf("%-20s\t", col);
-		}
-
-		System.out.println();
-		
-		// loop through the result set  
-		for (ArrayList temp : userRs) {
-			
-			System.out.printf("%-20s\t%-20s\t%-20s",
-				temp.get(0),
-				temp.get(1),
-				temp.get(2));
-			System.out.println();
-
-		}
-	}
+//	public static void printUsers(DBConnection dbConnection) {
+//		dbConnection.selectAllUsers();
+//		List<ArrayList<String>> userRs = dbConnection.selectAllUsers();
+//		ArrayList cols = dbConnection.getColArr();
+//
+//		// loop through column names
+//		for (var col : cols) {
+//			System.out.printf("%-20s\t", col);
+//		}
+//
+//		System.out.println();
+//		
+//		// loop through the result set  
+//		for (ArrayList temp : userRs) {
+//			
+//			System.out.printf("%-20s\t%-20s\t%-20s",
+//				temp.get(0),
+//				temp.get(1),
+//				temp.get(2));
+//			System.out.println();
+//
+//		}
+//	}
 }
