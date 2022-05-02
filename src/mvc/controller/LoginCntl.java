@@ -54,4 +54,8 @@ public class LoginCntl {
 			showLoginUI(false);
 		}
 	}
+	
+	public void closeDatabaseConnection() {
+		dbConnection.closeConnection();
+	}
 }
