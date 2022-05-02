@@ -150,13 +150,13 @@ public class DBConnection {
 		}
 	}
         
-        public void insertNote (int noteId, String noteBody) {
+        public void insertNote (String noteBody, Date dueByDate) {
                 String insertNote = "INSERT INTO NOTES" + 
-                        " (NoteID, Body) VALUES (?,?)";
+                        " (Body, DueByDate) VALUES (?,?)";
                 try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
 
-                    queryStatement.setInt(1, noteId);
-                    queryStatement.setString(2, insertNote);
+                    queryStatement.setString(1, noteBody);
+                    queryStatement.setString(2, dueByDate.toString());
 
                 } catch (SQLException e) {
                     e.getMessage();
