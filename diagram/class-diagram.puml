@@ -74,17 +74,29 @@ package mvc.view {
 	}
 }
 
-database "Sqlite" {
+database "SQLite" {
 	!define primary_key(x) <b><color:#b8861b><&key></color> x</b>
 	!define foreign_key(x) <color:#aaaaaa><&key></color> x
 	!define column(x) <color:#efefef><&media-record></color> x
 	!define table(x) entity x << (T, white) >>
+	
+	table( USERS ) {
+		primary_key( UserID ): UUID
+		column( Username ): TEXT
+		column( Password ): TEXT
+	}
 
-	table( NOTE ) {
-		primary_key( id ): UUID 
-		column( username ): VARCHAR
-		column( date ): DATETIME
-		column( body ): TEXT
+	table( NOTES ) {
+		primary_key( NoteID ): UUID 
+		column( CreatedDate ): DATETIME
+		column( DueByDate ): DATETIME
+		column( Body ): TEXT
+		column( Title ): TEXT
+	}
+
+	table( USERS_NOTES ) {
+		foreign_key( NoteID )
+		foreign_key( UserID )
 	}
 }
 
@@ -96,7 +108,7 @@ LoginCntl --> CreateAccountView : uses
 LoginCntl --> LoginView : updates
 LoginCntl --> DBConnection : uses 
 LoginCntl --> NoteCntl : gives control
-DBConnection --> Sqlite : uses
+DBConnection --> SQLite : uses
 LoginCntl --> NavCntl : gives control
 
 NavCntl --> NavView : updates
@@ -112,5 +124,8 @@ NoteCntl --> NavCntl : gives control
 AlertCntl --> AlertView : updates
 AlertCntl --> DBConnection : uses
 AlertCntl --> NavCntl : gives control
+
+USERS ||--|{ USERS_NOTES
+NOTES ||--|{ USERS_NOTES
 
 @enduml
