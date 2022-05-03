@@ -59,6 +59,7 @@ public class NavView extends javax.swing.JFrame {
                         }
                 });
 
+                labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 labelTitle.setText("Navigation");
 
                 btnNoteList.setText("Note List");
@@ -72,37 +73,31 @@ public class NavView extends javax.swing.JFrame {
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(164, 164, 164)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(btnAlert)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(labelTitle)
-                                                                .addComponent(btnBack))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnNote)
-                                                                .addGap(1, 1, 1))))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(155, 155, 155)
-                                                .addComponent(btnNoteList)))
-                                .addContainerGap(165, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(165, 165, 165)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(labelTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(btnNoteList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnNote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(165, 165, 165))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addGap(20, 20, 20)
                                 .addComponent(labelTitle)
-                                .addGap(41, 41, 41)
+                                .addGap(35, 35, 35)
                                 .addComponent(btnNote)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addGap(35, 35, 35)
                                 .addComponent(btnNoteList)
-                                .addGap(31, 31, 31)
+                                .addGap(35, 35, 35)
                                 .addComponent(btnAlert)
-                                .addGap(39, 39, 39)
+                                .addGap(35, 35, 35)
                                 .addComponent(btnBack)
-                                .addGap(21, 21, 21))
+                                .addGap(20, 20, 20))
                 );
 
                 pack();
