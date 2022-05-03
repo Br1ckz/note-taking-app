@@ -138,15 +138,11 @@ public class DBConnection {
 	 * @param lastName
 	 */
 	public void insertUser(
-		//		int userId, 
 		String firstName, String lastName) {
 		String insertUserStmt = "INSERT INTO USERS "
 			+ "(FirstName, LastName) "
 			+ "VALUES (?, ?)";
 		try ( PreparedStatement stmt = connection.prepareStatement(insertUserStmt)) {
-
-			// insert values into SQL prepared statement and execute
-//			queryStatement.setInt(1, userId);
 			stmt.setString(1, firstName);
 			stmt.setString(2, lastName);
 			stmt.executeUpdate();
