@@ -145,6 +145,8 @@ public class CreateAccountView extends javax.swing.JFrame {
 
         private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
                 loginCntl.createAccount(firstNameField.getText(), lastNameField.getText());
+		loginCntl.showLoginUI(true);
+		loginCntl.showCreateAccountUI(false);
         }//GEN-LAST:event_submitButtonActionPerformed
 
     private void firstNameFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstNameFieldMouseClicked
