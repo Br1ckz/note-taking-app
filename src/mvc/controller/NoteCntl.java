@@ -4,8 +4,6 @@
  */
 package mvc.controller;
 
-import java.time.LocalDateTime;
-//import java.util.Date;
 import java.sql.Date;
 import mvc.model.DBConnection;
 import mvc.model.User;

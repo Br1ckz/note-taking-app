@@ -12,10 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSetMetaData;
-//import java.util.Date;
 import java.util.List;
 import java.sql.Date;
-import java.util.HashMap;
 import static mvc.model.DBConnection.getCurrentPath;
 
 /**

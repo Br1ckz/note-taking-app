@@ -5,7 +5,6 @@
 package mvc.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *

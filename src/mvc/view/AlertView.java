@@ -7,7 +7,6 @@ package mvc.view;
 import java.text.ParseException;
 import mvc.controller.AlertCntl;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -265,18 +264,6 @@ public class AlertView extends javax.swing.JFrame {
         }//GEN-LAST:event_btnBackActionPerformed
 
         private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-//		String sDate = dateTextField.getText();
-//		String sTime = timeTextField.getText();
-//		String sCombine = sDate + " " + sTime;
-//
-//		try {
-//			//Idea of code referenced from https://www.javatpoint.com/java-string-to-date
-//			Date finalDateTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sCombine);
-//			alertCntl.addDateTime(finalDateTime);
-//		} catch (ParseException e) {
-//			System.out.println(e.getMessage());
-//		}
-
 		String inputDateTime = dateTextField.getText() + " " + timeTextField.getText();
 		SimpleDateFormat formatDateTime = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		try {
@@ -299,21 +286,6 @@ public class AlertView extends javax.swing.JFrame {
         private void dateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextFieldActionPerformed
                 // TODO add your handling code here:
         }//GEN-LAST:event_dateTextFieldActionPerformed
-
-//	private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
-//		String sDate = dateTextField.getText();
-//		String sTime = timeTextField.getText();
-//		String sCombine = sDate + " " + sTime;
-//
-//		//Idea of code referenced from https://www.javatpoint.com/java-string-to-date
-//		Date finalDateTime = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sCombine);
-//	}
-//	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
-//		System.exit(0);
-//	}
-	/**
-	 * @param args the command line arguments
-	 */
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private java.awt.Label DateLabel;
