@@ -150,6 +150,8 @@ public class NoteListView extends javax.swing.JFrame {
 
         private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
                noteListCntl.updateNote(fieldNoteTitle.getText(), noteBody.getText());
+	       fieldNoteTitle.setText("");
+	       noteBody.setText("");
         }//GEN-LAST:event_btnSubmitActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables

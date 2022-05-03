@@ -99,6 +99,11 @@ public class NoteView extends javax.swing.JFrame {
                 });
 
                 CancelButton.setText("Cancel");
+                CancelButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                CancelButtonActionPerformed(evt);
+                        }
+                });
 
                 btnBack.setText("Back");
                 btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +235,19 @@ public class NoteView extends javax.swing.JFrame {
 		} else {
 			noteCntl.sendNote(fieldNoteTitle.getText(), NewNoteField.getText());
 		}
+
+		fieldNoteTitle.setText("");
+		NewNoteField.setText("");
+		NoteDate.setText("");
+		NoteTime.setText("");
         }//GEN-LAST:event_SubmitButtonActionPerformed
+
+        private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+		fieldNoteTitle.setText("");
+		NewNoteField.setText("");
+		NoteDate.setText("");
+		NoteTime.setText("");
+        }//GEN-LAST:event_CancelButtonActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton CancelButton;

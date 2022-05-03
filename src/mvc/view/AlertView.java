@@ -96,11 +96,6 @@ public class AlertView extends javax.swing.JFrame {
                                 dateTextFieldMouseClicked(evt);
                         }
                 });
-                dateTextField.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                dateTextFieldActionPerformed(evt);
-                        }
-                });
 
                 javax.swing.GroupLayout DatePanelLayout = new javax.swing.GroupLayout(DatePanel);
                 DatePanel.setLayout(DatePanelLayout);
@@ -275,6 +270,10 @@ public class AlertView extends javax.swing.JFrame {
 		} catch (ParseException ex) {
 			Logger.getLogger(NoteView.class.getName()).log(Level.SEVERE, null, ex);
 		}
+		
+		dateTextField.setText("");
+		timeTextField.setText("");
+		fieldNoteTitle.setText("");
         }//GEN-LAST:event_btnEnterActionPerformed
 
         private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -282,10 +281,6 @@ public class AlertView extends javax.swing.JFrame {
 		timeTextField.setText("");
 		fieldNoteTitle.setText("");
         }//GEN-LAST:event_btnCancelActionPerformed
-
-        private void dateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextFieldActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_dateTextFieldActionPerformed
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private java.awt.Label DateLabel;
