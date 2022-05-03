@@ -171,14 +171,14 @@ public class DBConnection {
 			return noteID;
 
 		} catch (SQLException e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 		return -1;
 	}
 
 	public Integer insertNote(String noteTitle, String noteBody, Date dueByDate) {
 		String insertNote = "INSERT INTO NOTES "
-			+ "(Body, CreatedDate, DateDueBy, Title) "
+			+ "(Body, CreatedDate, DueByDate, Title) "
 			+ "VALUES (?, ?, ?, ?)";
 		try ( PreparedStatement queryStatement = connection.prepareStatement(insertNote)) {
 			Date createdDate = new Date(System.currentTimeMillis());
@@ -191,7 +191,8 @@ public class DBConnection {
 			return noteID;
 
 		} catch (SQLException e) {
-			e.getMessage();
+			System.out.println("Insert note");
+			System.out.println(e.getMessage());
 		}
 		return -1;
 	}
@@ -370,17 +371,17 @@ public class DBConnection {
 
 	public void insertDate(int noteID, Date finalDateTime) {
 		String insertDateStatement = "Update NOTES "
-			+ "SET DateDueBy = ? "
+			+ "SET DueByDate = ? "
 			+ "where NoteID = ?";
 
 		try ( PreparedStatement queryStatement = connection.prepareStatement(insertDateStatement)) {
 			queryStatement.setDate(1, finalDateTime);
 			queryStatement.setInt(2, noteID);
 			queryStatement.executeUpdate();
-			
 			queryStatement.close();
 		} catch (SQLException e) {
-			e.getMessage();
+			System.out.println("insert date");
+			System.out.println(e.getMessage());
 		}
 	}
 
