@@ -2,7 +2,7 @@
 * alert application/todo list application for multiple users
 
 ## Specifications 
-* Java 17
+* Java 18
 * Sqlite database 
 * Swing UI
 * Java ant architecture
