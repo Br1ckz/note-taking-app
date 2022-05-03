@@ -59,8 +59,8 @@ public class DBConnection {
 				createTable.execute();
 				stmt = "CREATE TABLE USERS ("
 					+ "UserID    INTEGER PRIMARY KEY AUTOINCREMENT,"
-					+ "FirstName TEXT,"
-					+ "LastName  TEXT"
+					+ "Username  TEXT,"
+					+ "Password  TEXT"
 					+ ");";
 				createTable = connection.prepareStatement(stmt);
 				createTable.execute();
@@ -131,20 +131,13 @@ public class DBConnection {
 		return null;
 	}
 
-	/**
-	 *
-	 * @param userId
-	 * @param firstName
-	 * @param lastName
-	 */
-	public void insertUser(
-		String firstName, String lastName) {
+	public void insertUser(String username, String password) {
 		String insertUserStmt = "INSERT INTO USERS "
-			+ "(FirstName, LastName) "
+			+ "(Username, Password) "
 			+ "VALUES (?, ?)";
 		try ( PreparedStatement stmt = connection.prepareStatement(insertUserStmt)) {
-			stmt.setString(1, firstName);
-			stmt.setString(2, lastName);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
 			stmt.executeUpdate();
 			stmt.close();
 
@@ -333,19 +326,19 @@ public class DBConnection {
 		return -1;
 	}
 
-	public boolean checkAccountCredentials(String firstName, String lastName) {
-		String queryAccount = "SELECT * FROM USERS where FirstName = ? AND LastName = ?";
+	public boolean checkAccountCredentials(String username, String password) {
+		String queryAccount = "SELECT * FROM USERS where Username = ? AND Password = ?";
 
 		try ( PreparedStatement stmt = connection.prepareStatement(queryAccount)) {
-			stmt.setString(1, firstName);
-			stmt.setString(2, lastName);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
 			ResultSet resultSet = stmt.executeQuery();
 
 			Boolean accountExist = false;
 			while (resultSet.next()) {
-				String resFirstName = resultSet.getString("FirstName");
-				String resLastName = resultSet.getString("LastName");
-				if (firstName.equalsIgnoreCase(resFirstName) && lastName.equals(resLastName)) {
+				String resUsername = resultSet.getString("Username");
+				String resPassword = resultSet.getString("Password");
+				if (username.equalsIgnoreCase(resUsername) && password.equals(resPassword)) {
 					accountExist = true;
 					break;
 				}
@@ -381,12 +374,12 @@ public class DBConnection {
 		}
 	}
 
-	public int getUserId(String firstName, String lastName) {
+	public int getUserId(String username, String password) {
 		String userIdStatement = "SELECT UserID from USERS where "
-			+ "FirstName = ? AND LastName = ?";
+			+ "Username = ? AND Password = ?";
 		try ( PreparedStatement stmt = connection.prepareStatement(userIdStatement)) {
-			stmt.setString(1, firstName);
-			stmt.setString(2, lastName);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
 			ResultSet resultSet = stmt.executeQuery();
 			int userId = resultSet.getInt("UserID");
 			resultSet.close();

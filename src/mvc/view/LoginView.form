@@ -28,8 +28,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lNameLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="fNameLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -42,8 +42,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lNameField" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <Component id="fNameField" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="passwordField" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="usernameField" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -64,13 +64,13 @@
               <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="fNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="fNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="usernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="usernameField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="68" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -108,19 +108,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="fNameLabel">
+    <Component class="javax.swing.JLabel" name="usernameLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="First Name:"/>
+        <Property name="text" type="java.lang.String" value="Username:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lNameLabel">
+    <Component class="javax.swing.JLabel" name="passwordLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Last Name:"/>
+        <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fNameField">
+    <Component class="javax.swing.JTextField" name="usernameField">
     </Component>
-    <Component class="javax.swing.JTextField" name="lNameField">
+    <Component class="javax.swing.JTextField" name="passwordField">
     </Component>
     <Component class="javax.swing.JLabel" name="titleLabel">
       <Properties>
