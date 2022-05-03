@@ -455,4 +455,16 @@ public class DBConnection {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void deleteNote(int noteID) {
+		String deleteNote = "DELETE FROM NOTES where NoteID = ?";
+		try (PreparedStatement stmt = connection.prepareStatement(deleteNote)) {
+			stmt.setInt(1, noteID);
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println("Delete note");
+			System.out.println(e.getMessage());
+		}
+	}
 }

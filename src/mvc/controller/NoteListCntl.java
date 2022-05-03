@@ -61,4 +61,8 @@ public class NoteListCntl {
 	public void updateNote(String noteTitle, String noteBody) {
 		dbConnection.updateNote(note.getNoteID(), noteTitle, noteBody);
 	}
+	
+	public void deleteNote() {
+		dbConnection.deleteNote(note.getNoteID());
+	}
 }

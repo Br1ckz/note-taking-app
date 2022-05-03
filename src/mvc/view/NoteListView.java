@@ -45,6 +45,7 @@ public class NoteListView extends javax.swing.JFrame {
                 btnNoteTitle = new javax.swing.JLabel();
                 btnPrevious = new javax.swing.JButton();
                 btnNext = new javax.swing.JButton();
+                btnDelete = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +85,13 @@ public class NoteListView extends javax.swing.JFrame {
                         }
                 });
 
+                btnDelete.setText("Delete");
+                btnDelete.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDeleteActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
@@ -92,24 +100,27 @@ public class NoteListView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(23, 23, 23)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(btnSubmit)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(btnPrevious)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(btnNext)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(btnBack))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                                 .addComponent(btnNoteTitle)
                                                                 .addGap(124, 124, 124)
-                                                                .addComponent(fieldNoteTitle))
-                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(fieldNoteTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addGroup(layout.createSequentialGroup()
+                                                                        .addComponent(btnSubmit)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(btnPrevious)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(btnNext)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(btnDelete)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                        .addComponent(btnBack))
+                                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(174, 174, 174)
                                                 .addComponent(labelTitle)))
-                                .addContainerGap(34, Short.MAX_VALUE))
+                                .addGap(23, 23, 23))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +138,8 @@ public class NoteListView extends javax.swing.JFrame {
                                         .addComponent(btnBack)
                                         .addComponent(btnSubmit)
                                         .addComponent(btnPrevious)
-                                        .addComponent(btnNext))
+                                        .addComponent(btnNext)
+                                        .addComponent(btnDelete))
                                 .addGap(22, 22, 22))
                 );
 
@@ -154,8 +166,15 @@ public class NoteListView extends javax.swing.JFrame {
 	       noteBody.setText("");
         }//GEN-LAST:event_btnSubmitActionPerformed
 
+        private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+                noteListCntl.deleteNote();
+		fieldNoteTitle.setText("");
+		noteBody.setText("");
+        }//GEN-LAST:event_btnDeleteActionPerformed
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnBack;
+        private javax.swing.JButton btnDelete;
         private javax.swing.JButton btnNext;
         private javax.swing.JLabel btnNoteTitle;
         private javax.swing.JButton btnPrevious;
